@@ -21,6 +21,7 @@ app.use("/user", require("./routes/userRouter"));
 app.use("/api", require("./routes/categoryRouter"));
 app.use("/api", require("./routes/uploadRouter"));
 app.use("/api", require("./routes/foodRouter"));
+app.use("/api", require("./routes/orderRouter"));
 
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;

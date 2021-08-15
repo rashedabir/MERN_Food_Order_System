@@ -7,6 +7,10 @@ const orderSchema = new mongoose.Schema(
       require: true,
       trim: true,
     },
+    cart: {
+      type: Array,
+      default: [],
+    },
     phone: {
       type: String,
       require: true,
@@ -25,6 +29,10 @@ const orderSchema = new mongoose.Schema(
     status: {
       type: Boolean,
       default: false,
+    },
+    price: {
+      type: String,
+      require: true,
     },
   },
   {
