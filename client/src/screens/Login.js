@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signin } from "../actions/userActions";
 
 function Login() {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signin(userName, password));
+  };
+
   return (
     <div className="container">
       <div className="login my-5 mx-auto py-5">
-        <form className="shadow p-3 mb-5 rounded p-3 bg-light text-center m-auto">
+        <form
+          onSubmit={formSubmit}
+          className="shadow p-3 mb-5 rounded p-3 bg-light text-center m-auto"
+        >
           <h3 className="text-center py-3 pb-4">Admin</h3>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">
@@ -16,6 +30,9 @@ function Login() {
               placeholder="Username"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
             />
           </div>
           <div class="input-group mb-3">
@@ -28,6 +45,9 @@ function Login() {
               placeholder="Password"
               aria-label="Password"
               aria-describedby="basic-addon1"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <button className="btn btn-success my-3 px-4 py-2" type="submit">

@@ -1,7 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
+import { logout } from "../actions/userActions";
 
 function Header() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logOut = () => {
+    dispatch(logout());
+    history.push("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
       <NavLink className="navbar-brand d-flex align-items-center" to="/">
@@ -42,13 +53,19 @@ function Header() {
           >
             About
           </NavLink>
-          <NavLink
-            className="nav-item nav-link"
-            to="/admin"
-            activeClassName="selected"
-          >
-            Contact us
-          </NavLink>
+          {user.auth ? (
+            <button className="btn btn-danger" onClick={logOut}>
+              Log out
+            </button>
+          ) : (
+            <NavLink
+              className="nav-item nav-link"
+              to="/admin"
+              activeClassName="selected"
+            >
+              Contact us
+            </NavLink>
+          )}
         </div>
       </div>
     </nav>
