@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { GlobalState } from "../GlobalState";
+import AuthRoute from "./AuthRoute";
 
 function Header() {
   const state = useContext(GlobalState);
@@ -32,40 +33,39 @@ function Header() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ms-auto">
-          <NavLink
-            className="nav-item nav-link"
-            to="/foods"
-            activeClassName="selected"
-          >
-            Foods
-          </NavLink>
-          <NavLink
-            className="nav-item nav-link"
-            to="/service"
-            activeClassName="selected"
-          >
-            Services
-          </NavLink>
-          <NavLink
-            className="nav-item nav-link"
-            to="/about"
-            activeClassName="selected"
-          >
-            About
-          </NavLink>
-          {isLogged ? (
-            <button className="btn btn-outline-danger" onClick={logOut}>
-              Log out
-            </button>
-          ) : (
-            <NavLink
-              className="nav-item nav-link"
-              to="/admin"
-              activeClassName="selected"
-            >
-              Contact us
-            </NavLink>
+          {isLogged ? null : (
+            <>
+              <NavLink
+                className="nav-item nav-link"
+                to="/foods"
+                activeClassName="selected"
+              >
+                Foods
+              </NavLink>
+              <NavLink
+                className="nav-item nav-link"
+                to="/service"
+                activeClassName="selected"
+              >
+                Services
+              </NavLink>
+              <NavLink
+                className="nav-item nav-link"
+                to="/about"
+                activeClassName="selected"
+              >
+                About
+              </NavLink>
+              <NavLink
+                className="nav-item nav-link"
+                to="/admin"
+                activeClassName="selected"
+              >
+                Contact us
+              </NavLink>
+            </>
           )}
+          {isLogged ? <AuthRoute logOut={logOut} /> : null}
         </div>
       </div>
     </nav>
