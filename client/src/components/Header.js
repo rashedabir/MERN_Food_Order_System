@@ -1,16 +1,16 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import { logout } from "../actions/userActions";
+import axios from "axios";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { GlobalState } from "../GlobalState";
 
 function Header() {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.userAPI.isLogged;
 
-  const logOut = () => {
-    dispatch(logout());
-    history.push("/");
+  const logOut = async () => {
+    await axios.get("/user/logout");
+    setIsLogged(false);
+    window.location.href = "/";
   };
 
   return (
@@ -53,8 +53,8 @@ function Header() {
           >
             About
           </NavLink>
-          {user.auth ? (
-            <button className="btn btn-danger" onClick={logOut}>
+          {isLogged ? (
+            <button className="btn btn-outline-danger" onClick={logOut}>
               Log out
             </button>
           ) : (

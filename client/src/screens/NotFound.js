@@ -1,15 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-
+import React from "react";
 function NotFound() {
-  const user = useSelector((state) => state.user);
-  const history = useHistory("");
-  useEffect(() => {
-    if (user.auth) {
-      history.push("/");
-    }
-  }, [history, user.auth]);
   return <div>not found</div>;
 }
 

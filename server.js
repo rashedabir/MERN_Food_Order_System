@@ -9,8 +9,12 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
-
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://hungry-naki.netlify.app"],
+    credentials: true,
+  })
+);
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -39,6 +43,13 @@ mongoose.connect(
     console.log("DATABASE CONNECTED...");
   }
 );
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`SERVER IS CONNECTED TO PORT ${PORT}`);

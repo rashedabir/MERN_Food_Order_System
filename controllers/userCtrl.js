@@ -26,13 +26,8 @@ const userCtrl = {
         password: hashPass,
       });
       await newUser.save();
-      const accessToken = createAccessToken({ id: newUser._id });
-      const refreshToken = createRefreshToken({ id: newUser._id });
 
-      res.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-      });
-      res.json({ accessToken });
+      res.json({ msg: "Admin Saved" });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
@@ -56,15 +51,10 @@ const userCtrl = {
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
+        secure: true,
+        sameSite: "none",
       });
-      if (user) {
-        res.json({
-          _id: user.id,
-          fullName: user.fullName,
-          userName: user.userName,
-          accessToken: accessToken,
-        });
-      }
+      res.json({ accessToken });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
@@ -106,28 +96,22 @@ const userCtrl = {
     if (!rf_token) {
       return res.status(400).json({ msg: "Please Login or Register" });
     }
-    jwt.verify(
-      rf_token,
-      process.env.REFRESH_TOKEN_SECRET,
-      async (err, user) => {
-        if (err) {
-          return res.status(400).json({ msg: "Please Login or Register" });
-        }
-        const accessToken = createAccessToken({ id: user._id });
-        const userInfo = await User.findById(user.id).select("-password");
-        res.json({
-          _id: userInfo._id,
-          fullName: userInfo.fullName,
-          userNAme: userInfo.userName,
-          accessToken: accessToken,
-        });
+    jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) {
+        return res.status(400).json({ msg: "Please Login or Register" });
       }
-    );
+      const accessToken = createAccessToken({ id: user.id });
+
+      res.json({ accessToken });
+    });
   },
   logOut: async (req, res) => {
     try {
       res.clearCookie("refreshToken", {
         httpOnly: true,
+        expires: new Date(0),
+        secure: true,
+        sameSite: "none",
       });
       return res.json({ msg: "Logged Out" });
     } catch (error) {

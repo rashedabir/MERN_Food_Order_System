@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { signin } from "../actions/userActions";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signin(userName, password));
+    try {
+      await axios.post("/user/login", {
+        userName: userName,
+        password: password,
+      });
+      window.location.href = "/";
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
   };
 
   return (
