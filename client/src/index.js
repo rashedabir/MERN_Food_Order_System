@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { DataProvider } from "./GlobalState";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToastContainer />
-    <App />
+    <DataProvider>
+      <ToastContainer />
+      <App />
+    </DataProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -34,6 +34,14 @@ const foodCtrl = {
       return res.status(500).json({ msg: error.message });
     }
   },
+  getAllFood: async (req, res) => {
+    try {
+      const foods = await Food.find();
+      res.json({ foods });
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
+    }
+  },
   getFeaturedFood: async (req, res) => {
     try {
       const featuredFoods = await Food.find({ featured: true });

@@ -2,19 +2,43 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Login from "./screens/Login";
-import { DataProvider } from "./GlobalState";
+import { GlobalState } from "./GlobalState";
 import Category from "./screens/Category";
+import { useContext } from "react";
+import FoodList from "./screens/FoodList";
+import NotFound from "./screens/NotFound";
+import AddFoods from "./screens/AddFoods";
 
 function App() {
+  const state = useContext(GlobalState);
+  const [isLogged] = state.userAPI.isLogged;
+
   return (
     <Router>
-      <DataProvider>
-        <Header />
-        <Switch>
-          <Route exact path="/admin" component={Login} />
-          <Route exact path="/categories" component={Category} />
-        </Switch>
-      </DataProvider>
+      <Header />
+      <Switch>
+        <Route exact path="/admin" component={isLogged ? NotFound : Login} />
+        <Route
+          exact
+          path="/categories"
+          component={isLogged ? Category : NotFound}
+        />
+        <Route
+          exact
+          path="/foodlist"
+          component={isLogged ? FoodList : NotFound}
+        />
+        <Route
+          exact
+          path="/addfoods"
+          component={isLogged ? AddFoods : NotFound}
+        />
+        <Route
+          exact
+          path="/edit_food/:id"
+          component={isLogged ? AddFoods : NotFound}
+        />
+      </Switch>
     </Router>
   );
 }

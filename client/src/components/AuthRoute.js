@@ -6,7 +6,7 @@ function AuthRoute({ logOut }) {
     <>
       <NavLink
         className="nav-item nav-link"
-        to="/foods"
+        to="/foodlist"
         activeClassName="selected"
       >
         Foods

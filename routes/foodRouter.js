@@ -4,6 +4,8 @@ const router = require("express").Router();
 
 router.route("/food").post(auth, foodCtrl.addFood).get(foodCtrl.getFood);
 
+router.route("/allfood").get(auth, foodCtrl.getAllFood);
+
 router.get("/featured_food", foodCtrl.getFeaturedFood);
 
 router
