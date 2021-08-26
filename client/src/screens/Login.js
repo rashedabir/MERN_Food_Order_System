@@ -13,7 +13,7 @@ function Login() {
         userName: userName,
         password: password,
       });
-      window.location.href = "/";
+      window.location.href = "/dashboard";
     } catch (error) {
       toast.error(error.response.data.msg);
     }

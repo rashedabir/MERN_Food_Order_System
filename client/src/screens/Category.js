@@ -12,6 +12,7 @@ function Category() {
   const [callback, setCallback] = state.categoryAPI.callback;
   const [onEdit, setOnEdit] = useState(false);
   const [id, setId] = useState("");
+  let count = 1;
 
   const handleSubmit = async () => {
     if (onEdit) {
@@ -93,7 +94,7 @@ function Category() {
         <table className="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>_id</th>
+              <th>#</th>
               <th scope="col">Name</th>
               <th scope="col">Action</th>
             </tr>
@@ -102,8 +103,8 @@ function Category() {
             {categories &&
               categories.map((category) => (
                 <tr>
-                  <td>{category._id}</td>
-                  <th scope="row">{category.name}</th>
+                  <th scope="row">{count++}</th>
+                  <td>{category.name}</td>
                   <td className="d-flex py-3">
                     <i
                       className="fas fa-edit mx-1"

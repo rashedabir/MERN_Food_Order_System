@@ -40,7 +40,9 @@ function AdminList() {
                   <td>{admin.fullName}</td>
                   <td>{admin.userName}</td>
                   <td>
-                    <Link to="/updateadmin">Change Password</Link>
+                    <Link to={`/updateadmin/${admin._id}`}>
+                      Change Password
+                    </Link>
                   </td>
                 </tr>
               ))}

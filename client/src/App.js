@@ -47,6 +47,11 @@ function App() {
         />
         <Route
           exact
+          path="/updateadmin/:id"
+          component={isLogged ? AddAdmin : NotFound}
+        />
+        <Route
+          exact
           path="/edit_food/:id"
           component={isLogged ? AddFoods : NotFound}
         />
