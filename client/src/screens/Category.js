@@ -25,9 +25,9 @@ function Category() {
             headers: { Authorization: token },
           }
         );
-        toast.warn("Category Updated");
-        setCallback(!callback);
         setCategory("");
+        setCallback(!callback);
+        toast.warn("Category Updated");
       } catch (error) {
         toast.error(error.response.data.msg);
       }
@@ -42,9 +42,9 @@ function Category() {
             headers: { Authorization: token },
           }
         );
-        toast.success("Category Created");
-        setCallback(!callback);
         setCategory("");
+        setCallback(!callback);
+        toast.success("Category Added");
       } catch (error) {
         toast.error(error.response.data.msg);
       }
@@ -90,7 +90,7 @@ function Category() {
         setOnEdit={setOnEdit}
       />
       <div className="table-responsive mb-5">
-        <table className="table table-striped">
+        <table className="table table-striped table-bordered">
           <thead>
             <tr>
               <th>_id</th>

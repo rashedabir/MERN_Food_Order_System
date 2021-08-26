@@ -8,6 +8,8 @@ import { useContext } from "react";
 import FoodList from "./screens/FoodList";
 import NotFound from "./screens/NotFound";
 import AddFoods from "./screens/AddFoods";
+import AdminList from "./screens/AdminList";
+import AddAdmin from "./screens/AddAdmin";
 
 function App() {
   const state = useContext(GlobalState);
@@ -17,7 +19,7 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/admin" component={isLogged ? NotFound : Login} />
+        <Route exact path="/login" component={isLogged ? NotFound : Login} />
         <Route
           exact
           path="/categories"
@@ -32,6 +34,16 @@ function App() {
           exact
           path="/addfoods"
           component={isLogged ? AddFoods : NotFound}
+        />
+        <Route
+          exact
+          path="/admin"
+          component={isLogged ? AdminList : NotFound}
+        />
+        <Route
+          exact
+          path="/addadmin"
+          component={isLogged ? AddAdmin : NotFound}
         />
         <Route
           exact

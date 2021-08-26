@@ -7,6 +7,7 @@ router.post("/login", userCtrl.login);
 router.get("/refresh_token", userCtrl.refreshToken);
 router.get("/logout", userCtrl.logOut);
 router.get("/infor", auth, userCtrl.getUser);
+router.get("/users", auth, userCtrl.getAllUser);
 
 router.put("/infor/:id", auth, userCtrl.updatePassword);
 

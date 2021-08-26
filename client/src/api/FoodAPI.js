@@ -14,7 +14,7 @@ function FoodAPI() {
       setLoading(false);
     };
     getFoods();
-  }, []);
+  }, [callback]);
 
   return {
     loading: [loading, setLoading],

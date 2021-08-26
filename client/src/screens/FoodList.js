@@ -35,7 +35,7 @@ function FoodList() {
           </Link>
         </div>
       </div>
-      <div className="table-responsive">
+      <div className="table-responsive text-center">
         <table class="table table-bordered table-striped">
           <thead>
             <tr>

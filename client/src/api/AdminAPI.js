@@ -1,35 +1,35 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-function AllFoodAPI(token) {
+function AdminAPI(token) {
+  const [admins, setAdmins] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [foods, setFoods] = useState([]);
   const [callback, setCallback] = useState(false);
 
   useEffect(() => {
     if (token) {
-      const getFoods = async () => {
+      const getAdmins = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/allfood", {
+          const res = await axios.get("/user/users", {
             headers: { Authorization: token },
           });
-          setFoods(res.data.foods);
+          setAdmins(res.data.users);
           setLoading(false);
         } catch (error) {
           toast.error(error.response.data.msg);
         }
       };
-      getFoods();
+      getAdmins();
     }
   }, [token, callback]);
 
   return {
+    admins: [admins, setAdmins],
     loading: [loading, setLoading],
-    allfoods: [foods, setFoods],
     callback: [callback, setCallback],
   };
 }
 
-export default AllFoodAPI;
+export default AdminAPI;

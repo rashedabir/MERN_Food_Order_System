@@ -18,6 +18,13 @@ function AuthRoute({ logOut }) {
       >
         Categories
       </NavLink>
+      <NavLink
+        className="nav-item nav-link"
+        to="/admin"
+        activeClassName="selected"
+      >
+        Admins
+      </NavLink>
       <button
         className="btn btn-outline-danger"
         onClick={() => {

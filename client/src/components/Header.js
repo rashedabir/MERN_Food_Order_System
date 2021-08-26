@@ -58,7 +58,7 @@ function Header() {
               </NavLink>
               <NavLink
                 className="nav-item nav-link"
-                to="/admin"
+                to="/login"
                 activeClassName="selected"
               >
                 Contact us
