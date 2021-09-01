@@ -93,3 +93,43 @@ a {
   font-weight: 800;
   color: crimson;
 }
+
+/*------------------------------home----------------------------*/
+
+.home .card {
+  height: 350px !important;
+  border-radius: 0%;
+}
+.home .card img {
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+.home .search {
+  max-width: 800px;
+  margin: 100px auto;
+}
+.home .search-btn {
+  background-color: #1c8;
+}
+.desc {
+  height: 53px;
+  overflow: hidden;
+}
+.order_btn {
+  background-color: #1c8;
+  border-radius: 0%;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.view_btn {
+  background-color: rgb(14, 13, 13);
+  border-radius: 0%;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.edit_btn {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 0%;
+}

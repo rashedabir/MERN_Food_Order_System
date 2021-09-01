@@ -2,28 +2,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-function AllFoodAPI(token) {
+function AllFoodAPI() {
   const [loading, setLoading] = useState(false);
   const [foods, setFoods] = useState([]);
   const [callback, setCallback] = useState(false);
 
   useEffect(() => {
-    if (token) {
-      const getFoods = async () => {
-        try {
-          setLoading(true);
-          const res = await axios.get("/api/allfood", {
-            headers: { Authorization: token },
-          });
-          setFoods(res.data.foods);
-          setLoading(false);
-        } catch (error) {
-          toast.error(error.response.data.msg);
-        }
-      };
-      getFoods();
-    }
-  }, [token, callback]);
+    const getFoods = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get("/api/allfood");
+        setFoods(res.data.foods);
+        setLoading(false);
+      } catch (error) {
+        toast.error(error.response.data.msg);
+      }
+    };
+    getFoods();
+  }, [callback]);
 
   return {
     loading: [loading, setLoading],

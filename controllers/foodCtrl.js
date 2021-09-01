@@ -1,5 +1,35 @@
 const Food = require("../models/foodsModel");
 
+class APIfeatures {
+  constructor(query, queryString) {
+    this.query = query;
+    this.queryString = queryString;
+  }
+  filtering() {
+    const queryObj = { ...this.queryString };
+
+    const excludedFields = ["page", "sort", "limit"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(
+      /\b(gte|gt|lt|lte|regex)\b/g,
+      (match) => "$" + match
+    );
+    this.query.find(JSON.parse(queryStr));
+
+    return this;
+  }
+
+  paginating() {
+    const page = this.queryString.page * 1 || 1;
+    const limit = this.queryString.limit * 1 || 9;
+    const skip = (page - 1) * limit;
+    this.query = this.query.skip(skip).limit(limit);
+    return this;
+  }
+}
+
 const foodCtrl = {
   addFood: async (req, res) => {
     try {
@@ -28,8 +58,17 @@ const foodCtrl = {
   },
   getFood: async (req, res) => {
     try {
-      const foods = await Food.find({ status: true });
-      res.json({ foods });
+      const features = new APIfeatures(Food.find({ status: true }), req.query)
+        .filtering()
+        .paginating();
+
+      const foods = await features.query;
+
+      res.json({
+        status: "success",
+        result: foods.length,
+        foods: foods,
+      });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }

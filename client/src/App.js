@@ -10,6 +10,9 @@ import NotFound from "./screens/NotFound";
 import AddFoods from "./screens/AddFoods";
 import AdminList from "./screens/AdminList";
 import AddAdmin from "./screens/AddAdmin";
+import Home from "./screens/Home";
+import FoodDetails from "./screens/FoodDetails";
+import Foods from "./screens/Foods";
 
 function App() {
   const state = useContext(GlobalState);
@@ -55,6 +58,9 @@ function App() {
           path="/edit_food/:id"
           component={isLogged ? AddFoods : NotFound}
         />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/food_details/:id" component={FoodDetails} />
+        <Route exact path="/foods" component={Foods} />
       </Switch>
     </Router>
   );
