@@ -33,9 +33,12 @@ function FoodCard({ food }) {
                 edit
               </Link>
             ) : (
-              <button className="col-6 btn order_btn mx-1 text-white">
+              <Link
+                to={`/order/${food._id}`}
+                className="col-6 btn order_btn mx-1 text-white"
+              >
                 order
-              </button>
+              </Link>
             )}
           </div>
         </div>

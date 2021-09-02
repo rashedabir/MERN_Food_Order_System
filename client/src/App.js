@@ -13,6 +13,7 @@ import AddAdmin from "./screens/AddAdmin";
 import Home from "./screens/Home";
 import FoodDetails from "./screens/FoodDetails";
 import Foods from "./screens/Foods";
+import FoodOrder from "./screens/FoodOrder";
 
 function App() {
   const state = useContext(GlobalState);
@@ -61,6 +62,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/food_details/:id" component={FoodDetails} />
         <Route exact path="/foods" component={Foods} />
+        <Route exact path="/order/:id" component={FoodOrder} />
       </Switch>
     </Router>
   );

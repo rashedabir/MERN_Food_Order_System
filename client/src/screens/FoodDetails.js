@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { GlobalState } from "../GlobalState";
 
 function FoodDetails() {
@@ -41,9 +41,12 @@ function FoodDetails() {
           <p className="mb-3">
             Sold: <strong>{details.sold}</strong>
           </p>
-          <button className="btn order_btn text-white my-3 px-5 py-2">
+          <Link
+            to={`/order/${details._id}`}
+            className="btn order_btn text-white my-3 px-5 py-2"
+          >
             order now
-          </button>
+          </Link>
         </div>
       </div>
     </div>
