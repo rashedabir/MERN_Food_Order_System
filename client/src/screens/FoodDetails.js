@@ -23,9 +23,9 @@ function FoodDetails() {
   return (
     <div className="container">
       <div className="row my-5">
-        <div className="col-lg-5 border">
+        <div className="col-lg-5">
           <img
-            className="py-2"
+            className="py-2 img-thumbnail"
             width="100%"
             src={images.url}
             alt={details.name}
