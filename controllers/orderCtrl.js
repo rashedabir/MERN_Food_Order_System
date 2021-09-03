@@ -23,19 +23,16 @@ const orderCtrl = {
   },
   updateOrder: async (req, res) => {
     try {
-      const { name, cart, phone, address, quantity, price, status } = req.body;
-      if (!name || !phone || !address || !quantity || !price) {
+      const { name, phone, address, status } = req.body;
+      if (!name || !phone || !address || !status) {
         return res.status(500).json({ msg: "Invalid Credentials" });
       }
       await Order.findOneAndUpdate(
         { _id: req.params.id },
         {
           name,
-          cart,
           phone,
           address,
-          quantity,
-          price,
           status,
         }
       );

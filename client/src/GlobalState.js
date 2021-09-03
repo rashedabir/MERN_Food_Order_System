@@ -6,6 +6,7 @@ import FoodAPI from "./api/FoodAPI";
 import AllFoodAPI from "./api/AllFoodAPI";
 import AdminAPI from "./api/AdminAPI";
 import FeaturedAPI from "./api/FeaturedAPI";
+import OrdersAPI from "./api/OrdersAPI";
 
 export const GlobalState = createContext();
 
@@ -29,6 +30,7 @@ export const DataProvider = ({ children }) => {
     allFoodAPI: AllFoodAPI(),
     adminAPI: AdminAPI(token),
     featuredAPI: FeaturedAPI(),
+    ordersAPI: OrdersAPI(token),
   };
 
   return <GlobalState.Provider value={state}>{children}</GlobalState.Provider>;

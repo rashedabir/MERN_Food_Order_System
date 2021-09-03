@@ -27,6 +27,13 @@ function AuthRoute({ logOut }) {
       </NavLink>
       <NavLink
         className="nav-item nav-link"
+        to="/order_list"
+        activeClassName="selected"
+      >
+        Orders
+      </NavLink>
+      <NavLink
+        className="nav-item nav-link"
         to="/admin"
         activeClassName="selected"
       >
