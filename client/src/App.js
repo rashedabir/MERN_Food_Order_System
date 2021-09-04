@@ -17,6 +17,8 @@ import FoodOrder from "./screens/FoodOrder";
 import OrderList from "./screens/OrderList";
 import OrderDetails from "./screens/OrderDetails";
 import EditOrder from "./screens/EditOrder";
+import Dashboard from "./screens/Dashboard";
+import Footer from "./components/Footer";
 
 function App() {
   const state = useContext(GlobalState);
@@ -54,6 +56,11 @@ function App() {
         />
         <Route
           exact
+          path="/dashboard"
+          component={isLogged ? Dashboard : NotFound}
+        />
+        <Route
+          exact
           path="/updateadmin/:id"
           component={isLogged ? AddAdmin : NotFound}
         />
@@ -82,6 +89,7 @@ function App() {
         <Route exact path="/foods" component={Foods} />
         <Route exact path="/order/:id" component={FoodOrder} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

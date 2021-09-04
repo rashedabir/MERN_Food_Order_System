@@ -18,6 +18,7 @@ function FoodOrder() {
   const params = useParams();
   const price = parseFloat(details.price) * qty;
   const history = useHistory();
+  const [callback, setCallback] = state.ordersAPI.callback;
 
   useEffect(() => {
     if (params.id) {
@@ -49,6 +50,7 @@ function FoodOrder() {
       });
       history.push("/");
       toast.success("Order Success");
+      setCallback(!callback);
     } catch (error) {
       toast.error(error.response.data.msg);
     }

@@ -139,7 +139,7 @@ function AddFoods() {
     <div className="container">
       <div className="row flex-column-reverse flex-lg-row my-4">
         <div className="col-md-12 col-lg-6">
-          <form className="border p-3 my-3">
+          <form className="border rounded p-3 my-3">
             <h3 className="text-center my-2 pb-3">Create Food</h3>
             <div className="mb-4">
               <label className="form-label">Food Name</label>
@@ -269,7 +269,7 @@ function AddFoods() {
           </form>
         </div>
         <div className="col-md-12 col-lg-6 my-3">
-          <div className="upload">
+          <div className="upload rounded">
             <input
               type="file"
               name="file"

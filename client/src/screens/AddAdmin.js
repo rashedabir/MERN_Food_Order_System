@@ -93,7 +93,7 @@ function AddAdmin() {
   return (
     <div className="container">
       <div className="my-5 login text-center mx-auto">
-        <form onSubmit={handleAdmin} className="border p-3">
+        <form onSubmit={handleAdmin} className="border rounded p-3">
           <h3 className="my-5">{onEdit ? "Update Admin" : "Add Admin"}</h3>
           <div class="form-floating mb-3">
             <input
