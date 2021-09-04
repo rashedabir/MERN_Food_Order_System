@@ -6,7 +6,9 @@ function CategoryAPI() {
   const [callback, setCallback] = useState(false);
 
   const getCategory = async () => {
-    const res = await axios.get("/api/category");
+    const res = await axios.get(
+      "https://hungrynaki.herokuapp.com/api/category"
+    );
     setCategories(res.data.categories);
   };
   useEffect(() => {

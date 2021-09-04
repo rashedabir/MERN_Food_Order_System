@@ -12,9 +12,12 @@ function OrdersAPI(token) {
       const getOrders = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/api/order", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://hungrynaki.herokuapp.com/api/order",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setOrders(res.data.orderList);
           setLoading(false);
         } catch (error) {

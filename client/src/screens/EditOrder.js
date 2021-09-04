@@ -40,7 +40,7 @@ function EditOrder() {
     e.preventDefault();
     try {
       await axios.put(
-        `/api/order/${id}`,
+        `https://hungrynaki.herokuapp.com/api/order/${id}`,
         {
           name: name,
           phone: phone,

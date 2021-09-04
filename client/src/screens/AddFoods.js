@@ -58,12 +58,16 @@ function AddFoods() {
       let formData = new FormData();
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/api/upload", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://hungrynaki.herokuapp.com/api/upload",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setLoading(false);
       setImage(res.data);
     } catch (error) {
@@ -75,7 +79,7 @@ function AddFoods() {
     try {
       setLoading(true);
       await axios.post(
-        "/api/destroy",
+        "https://hungrynaki.herokuapp.com/api/destroy",
         { public_id: image.public_id },
         {
           headers: { Authorization: token },
@@ -97,7 +101,7 @@ function AddFoods() {
     try {
       if (onEdit) {
         await axios.put(
-          `/api/food/${id}`,
+          `https://hungrynaki.herokuapp.com/api/food/${id}`,
           {
             name: name,
             category: category,
@@ -114,7 +118,7 @@ function AddFoods() {
         toast.warn("Update Food");
       } else {
         await axios.post(
-          "/api/food",
+          "https://hungrynaki.herokuapp.com/api/food",
           {
             name: name,
             category: category,

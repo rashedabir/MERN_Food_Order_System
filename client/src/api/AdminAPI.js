@@ -12,9 +12,12 @@ function AdminAPI(token) {
       const getAdmins = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/user/users", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://hungrynaki.herokuapp.com/user/users",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setAdmins(res.data.users);
           setLoading(false);
         } catch (error) {

@@ -47,7 +47,7 @@ function AddAdmin() {
     try {
       if (onEdit) {
         await axios.put(
-          `/user/infor/${id}`,
+          `https://hungrynaki.herokuapp.com/user/infor/${id}`,
           {
             userName,
             currentPassword,
@@ -67,7 +67,7 @@ function AddAdmin() {
         toast.success("Admin Updated");
       } else {
         await axios.post(
-          "/user/register",
+          "https://hungrynaki.herokuapp.com/user/register",
           {
             fullName,
             userName,

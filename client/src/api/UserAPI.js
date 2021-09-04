@@ -13,9 +13,12 @@ function UserAPI(token) {
       const getUser = async () => {
         try {
           setLoading(true);
-          const res = await axios.get("/user/infor", {
-            headers: { Authorization: token },
-          });
+          const res = await axios.get(
+            "https://hungrynaki.herokuapp.com/user/infor",
+            {
+              headers: { Authorization: token },
+            }
+          );
           setIsLogged(true);
           setUser(res.data.user);
           setLoading(false);

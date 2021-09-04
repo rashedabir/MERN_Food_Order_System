@@ -12,7 +12,7 @@ function FoodList() {
 
   const deleteFood = async (id, name) => {
     if (window.confirm(`Want to Delete ${name}`)) {
-      await axios.delete(`/api/food/${id}`, {
+      await axios.delete(`https://hungrynaki.herokuapp.com/api/food/${id}`, {
         headers: { Authorization: token },
       });
       setCallback(!callback);

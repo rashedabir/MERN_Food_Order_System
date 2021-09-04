@@ -19,6 +19,7 @@ import OrderDetails from "./screens/OrderDetails";
 import EditOrder from "./screens/EditOrder";
 import Dashboard from "./screens/Dashboard";
 import Footer from "./components/Footer";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 function App() {
   const state = useContext(GlobalState);

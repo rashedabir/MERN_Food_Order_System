@@ -12,7 +12,11 @@ function FoodAPI() {
   useEffect(() => {
     const getFoods = async () => {
       setLoading(true);
-      const res = await axios.get(`/api/food?limit=${page * 8}&${category}`);
+      const res = await axios.get(
+        `https://hungrynaki.herokuapp.com/api/food?limit=${
+          page * 8
+        }&${category}`
+      );
       setFoods(res.data.foods);
       setResult(res.data.result);
       setLoading(false);

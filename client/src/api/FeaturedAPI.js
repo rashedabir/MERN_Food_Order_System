@@ -8,7 +8,9 @@ function FeaturedAPI() {
 
   const getFeatured = async () => {
     setLoading(true);
-    const res = await axios.get("/api/featured_food");
+    const res = await axios.get(
+      "https://hungrynaki.herokuapp.com/api/featured_food"
+    );
     setFeatured(res.data.featuredFoods);
     setLoading(false);
   };

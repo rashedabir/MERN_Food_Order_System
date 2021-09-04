@@ -11,7 +11,9 @@ function AllFoodAPI() {
     const getFoods = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("/api/allfood");
+        const res = await axios.get(
+          "https://hungrynaki.herokuapp.com/api/allfood"
+        );
         setFoods(res.data.foods);
         setLoading(false);
       } catch (error) {

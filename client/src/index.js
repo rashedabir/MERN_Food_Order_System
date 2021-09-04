@@ -6,12 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { DataProvider } from "./GlobalState";
+import axios from "axios";
+import MessengerCustomerChat from "react-messenger-customer-chat";
+
+axios.defaults.withCredentials = true;
 
 ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
       <ToastContainer />
       <App />
+      <MessengerCustomerChat pageId="103973174662277" appId="587429252625964" />
     </DataProvider>
   </React.StrictMode>,
   document.getElementById("root")

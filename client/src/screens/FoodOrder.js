@@ -40,7 +40,7 @@ function FoodOrder() {
 
   const orderForm = async () => {
     try {
-      await axios.post("/api/order", {
+      await axios.post("https://hungrynaki.herokuapp.com/api/order", {
         name: name,
         cart: details,
         phone: phone,
